@@ -19,6 +19,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private NfcAdapter nfcAdapter = null;
+    private PendingIntent pendingIntent = null;
+    private TextView text = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -233,20 +237,4 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    private void displayMsgs(NdefMessage[] msgs) {
-        if (msgs == null || msgs.length == 0)
-            return;
-
-        StringBuilder builder = new StringBuilder();
-        List<ParsedNdefRecord> records = NdefMessageParser.parse(msgs[0]);
-        final int size = records.size();
-
-        for (int i = 0; i < size; i++) {
-            ParsedNdefRecord record = records.get(i);
-            String str = record.str();
-            builder.append(str).append("\n");
-        }
-
-        text.setText(builder.toString());
-    }
 }
