@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private PendingIntent pendingIntent = null;
     private TextView text = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
