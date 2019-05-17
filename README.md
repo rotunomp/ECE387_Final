@@ -18,7 +18,7 @@ The goal of this projet was to create a machine workout tracker. There are two s
 - Android Studio project
 
 # Video
-The video demonstrating the project can be found [here](https://www.google.com "Video")
+The video demonstrating the project can be found [here](https://youtu.be/IvDTyIdZ8Ek)
 
 # Complications
 One of the main features of the system was supposed to be its NFC capabilities. I think that NFC is a really cool technology that is rarely used to its full potential. Most of the action it gets in the real world is through phone payements. While undergoing this project, I found a few points when this lack of support showed strongly.
