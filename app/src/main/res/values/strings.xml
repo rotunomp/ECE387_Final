@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">NFC Reader</string>
     <string name="title_activity_add_workout">AddWorkoutActivity</string>
+    <string name="back_to_main_page">Back to main page</string>
+    <string name="tap_your_device_to_get_started">Tap a machine to start a workout!</string>
+    <string name="go_to_database_write">Add a Workout</string>
+    <string name="see_workout_history">See workout history</string>
 </resources>

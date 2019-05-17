@@ -12,6 +12,8 @@ import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +30,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        configureDatabaseWriteButton();
+        configureDatabaseViewButton();
+
+        // set up navigation buttons
         text = (TextView) findViewById(R.id.text);
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
 
         if (nfcAdapter == null) {
             Toast.makeText(this, "No NFC", Toast.LENGTH_SHORT).show();
@@ -41,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 new Intent(this, this.getClass())
                         .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
     }
+
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -93,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         text.setText(builder.toString());
+
+        // TODO: Display button now
     }
 
     @Override
@@ -236,6 +246,26 @@ public class MainActivity extends AppCompatActivity {
             factor *= 256l;
         }
         return result;
+    }
+
+    private void configureDatabaseWriteButton() {
+        Button databaseWrite = (Button) findViewById(R.id.page_database_write);
+        databaseWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddWorkoutActivity.class));
+            }
+        });
+    }
+
+    private void configureDatabaseViewButton() {
+        Button databaseView = (Button) findViewById(R.id.page_database_view);
+        databaseView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ListWorkoutsActivity.class));
+            }
+        });
     }
 
 }

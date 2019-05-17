@@ -2,6 +2,7 @@ package com.example.nfcreader;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -12,9 +13,9 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "workout_table";
     private static final String COL1 = "ID";
-    private static final String COL2 = "Machine";
-    private static final String COL3 = "Reps";
-    private static final String COL4 = "Weight";
+    private static final String COL2 = "machine";
+    private static final String COL3 = "reps";
+    private static final String COL4 = "weight";
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
@@ -31,7 +32,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP IF TABLE EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
@@ -48,5 +49,19 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
         // if the result equals -1 it was unsuccessful
         return result != -1;
+    }
+
+    public Cursor getData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return data;
+    }
+
+    public Cursor getColumn(String column) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor data = db.rawQuery("SELECT " + column +" FROM " + TABLE_NAME, null);
+        return data;
     }
 }
