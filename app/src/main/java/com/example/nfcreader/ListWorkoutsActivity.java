@@ -46,12 +46,13 @@ public class ListWorkoutsActivity extends AppCompatActivity {
 
         while(data.moveToNext()) {
             workoutList.add(new Workout(data.getString(1), data.getInt(2), data.getInt(3)));
-
-            ThreeColumnListAdapter adapter = new ThreeColumnListAdapter(this, R.layout.list_adapter_view, workoutList);
-
-            list_workouts = (ListView) findViewById(R.id.list_workouts);
-            list_workouts.setAdapter(adapter);
         }
+
+        ThreeColumnListAdapter adapter = new ThreeColumnListAdapter(this, R.layout.list_adapter_view, workoutList);
+
+        list_workouts = (ListView) findViewById(R.id.list_workouts);
+        list_workouts.setAdapter(adapter);
+
     }
 
     private void toastMessage(String message) {
